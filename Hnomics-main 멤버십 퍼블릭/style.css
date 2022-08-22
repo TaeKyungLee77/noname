@@ -1,0 +1,521 @@
+:root {
+    --color-white: #ffffff;
+    --color-gray: #d6d6d6;
+    --color-charcoal: #404040;
+    --color-navy: #0d0a29;
+    --color-highlight: #f050a0;
+
+    --gap: 32px;
+
+    --font-size-title: 20px;
+    --letter-spacing-title: 0.4px;
+
+    --font-size-description: 24px;
+    --letter-spacing-description: 0.48px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+body{
+    max-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+iframe{
+    background-color: #040408;
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    transform:scale(1.25);
+    z-index: 10;
+    pointer-events: none; 
+}
+
+.background_overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d0a29, #0d0a2900);
+    z-index: -1;
+}
+
+.background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url("sprites/background.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    z-index: -2;
+}
+
+header{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.header_wrapper{
+    max-width: 1320px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logo{
+    display: flex;
+}
+
+.logo > img{
+    width: 360px;
+}
+
+.connect_wallet{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 1px solid var(--color-white);
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.connect_wallet > div:nth-child(1){
+    background-image: url("sprites/klaytn_white.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    transition: 0.25s;
+}
+
+.connect_wallet > div:nth-child(2){
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-white);
+    letter-spacing: -0.32px;
+    margin-bottom: 0.5px;
+    margin-left: 8px;
+    transition: 0.25s;
+}
+
+.connect_wallet:hover{
+    background: var(--color-white);
+}
+
+.connect_wallet:hover.connect_wallet > div:nth-child(1){
+    background-image: url("sprites/klaytn_navy.png");
+}
+
+.connect_wallet:hover.connect_wallet > div:nth-child(2){
+    color: var(--color-navy);
+}
+
+.heartbeat{
+    width: 540px;
+    height: 360px;
+    background-image: url("sprites/Heartbeat.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: heartbeat 0.5s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opensea{
+    display: none;
+    z-index: 1;
+}
+
+.opensea.minting_success{
+    display: block;
+}
+
+.opensea > button{
+    width: 100%;
+    height: 100%;
+    padding: var(--gap);
+    background-color: var(--color-white);
+    color: var(--color-highlight);
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-description);
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing-description);
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes heartbeat{
+    0%{
+        transform: scale(1.04);
+    }
+    75%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0.96);
+    }
+}
+
+.info_wrapper{
+    max-width: 1320px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    place-items: center; 
+    gap: var(--gap);
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: var(--gap);
+    margin-bottom: 80px;
+}
+
+.minting_info{
+    max-width: 950px;
+    max-height: 620px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.balance{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--gap);
+}
+
+.balance_title{
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-title);
+    color: var(--color-gray);
+}
+
+.balance_desc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.balance_desc > img{
+    width: var(--font-size-description);
+    height: var(--font-size-description);
+}
+
+.balance_desc > div{
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-description);
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing-description);
+    margin-left: 16px;
+    color: var(--color-white);
+}
+
+.minting_table{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #08081280, #12121680);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.line_horizontal{
+    width: calc(100% - 80px);
+    height: 1px;
+    background-color: var(--color-charcoal);
+}
+
+.line_vertical{
+    width: 1px;
+    height: calc(100% - 20px);
+    background-color: var(--color-charcoal);
+}
+
+.row_1, .row_2{
+    width: 100%;
+    height: 50%;
+    max-height: 133px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+}
+
+.col_1, .col_2, .col_3{
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+}
+
+.col_1 > div:nth-child(1), .col_2 > div:nth-child(1), .col_3 > div:nth-child(1){
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-title);
+    color: var(--color-gray);
+    margin-bottom: 4px;
+}
+
+.col_1 > div:nth-child(2), .col_2 > div:nth-child(2), .col_3 > div:nth-child(2){
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-description);
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing-description);
+    color: var(--color-white);
+}
+
+.amount_description{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.amount_desc > button{
+    width: var(--gap);
+    height: var(--gap);
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    color: var(--color-white);
+    background: none;
+    border: 1px solid var(--color-white);
+    border-radius: 4px;
+    transition: 0.25s;
+}
+
+.amount_desc > button:hover:not(.untouchable){
+    color: var(--color-black);
+    background-color: var(--color-white);
+    cursor: pointer;
+}
+
+.amount_desc > .untouchable{
+    color: var(--color-charcoal);
+    border: 1px solid var(--color-charcoal);
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:focus{
+    outline: none;
+}
+
+.amount{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: var(--font-size-description);
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing-description);
+    color: var(--color-highlight);
+    border: none;
+    background: none;
+    
+}
+
+.highlight{
+    color: var(--color-highlight);
+}
+
+.small{
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-title);
+}
+
+.minting_zone{
+    max-width: 290px;
+    max-height: 620px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--gap);
+}
+
+.price_title{
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-title);
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-title);
+    color: var(--color-gray);
+}
+
+.price_desc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price_desc > img{
+    width: var(--font-size-description);
+    height: var(--font-size-description);
+}
+
+.price_desc > div{
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-description);
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing-description);
+    margin-left: 16px;
+    color: var(--color-highlight);
+}
+
+.btn_minting{
+    width: 100%;
+    height: calc(3 * var(--gap));
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-description);
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing-description);
+    color: var(--color-white);
+    background: linear-gradient(135deg, #f050a0, #d82d82);
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn_minting:hover{
+    box-shadow: 0 0px 24px 0px var(--color-highlight);
+}
+
+
+@media screen and (max-width: 1120px) {
+    .info_wrapper{
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .minting_info{
+        max-width: 1120px;
+    }
+
+    .minting_zone{
+        max-width: 1120px;
+    justify-content: flex-start;
+    }
+
+    .heartbeat{
+        width: 480px;
+        height: 320px;
+    }
+
+}
+
+@media screen and (max-width: 748px) {
+
+
+    :root {
+        --gap: 24px;
+
+        --font-size-title: 16px;
+        --letter-spacing-title: 0.32px;
+    
+        --font-size-description: 20px;
+        --letter-spacing-description: 0.4px;
+    }  
+
+    .heartbeat{
+        width: 360px;
+        height: 240px;
+    }
+
+    .connect_wallet > div:nth-child(2){
+        font-size: 14px;
+        letter-spacing: -0.28px;
+    }
+
+    
+    .logo > img{
+    width: 240px;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+
+    :root {
+        --gap: 20px;
+        
+        --font-size-title: 12px;
+        --letter-spacing-title: 0.24px;
+    
+        --font-size-description: 16px;
+        --letter-spacing-description: 0.32px;
+    }  
+
+    .heartbeat{
+        width: 300px;
+        height: 200px;
+    }
+
+    .connect_wallet > div:nth-child(2){
+        font-size: 12px;
+        letter-spacing: -0.24px;
+    }
+
+    .logo > img{
+        width: 200px;
+    }
+
+    .btn_minting{
+        border-radius: 8px;
+    }
+}
